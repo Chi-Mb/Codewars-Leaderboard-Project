@@ -4,7 +4,7 @@ import { getUserData, processLeaderboardData } from './logic.mjs';
 
 const fetchBtn = document.getElementById('fetchButton');
 const usernamesInput = document.getElementById('usernamesInput');
-const outputDiv = document.getElementById('output');
+const outputDiv = document.getElementById('leaderboard');
 
 
 fetchBtn.addEventListener('click', async () => {
