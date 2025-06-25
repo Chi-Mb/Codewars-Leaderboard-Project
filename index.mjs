@@ -49,17 +49,33 @@ fetchBtn.addEventListener('click', async () => {
     `;
 
     // Loops through sortedUsers to create table rows
-    sortedUsers.forEach((user, index) => {
-      html += `
-        <tr>
-          <td>${index + 1}</td>
-          <td><a href="https://www.codewars.com/users/${user.username}" target="_blank">${user.username}</a></td>
-          <td>${user.honor.toLocaleString()}</td>
-          <td>${user.clan || '-'}</td>
-          <td>${user.leaderboardPosition ?? '-'}</td>
-        </tr>
-      `;
-    });
+  sortedUsers.forEach((user, index) => {
+  let rowClass = '';
+  let medal = '';
+
+  if (index === 0) {
+    rowClass = 'gold';
+    medal = '🥇';
+  } else if (index === 1) {
+    rowClass = 'silver';
+    medal = '🥈';
+  } else if (index === 2) {
+    rowClass = 'bronze';
+    medal = '🥉';
+  }
+
+  html += `
+    <tr class="${rowClass}">
+      <td>${index + 1} ${medal}</td>
+      <td><a href="https://www.codewars.com/users/${user.username}" target="_blank">${user.username}</a></td>
+      <td>${user.honor.toLocaleString()}</td>
+      <td>${user.clan || '-'}</td>
+      <td>${user.leaderboardPosition ?? '-'}</td>
+    </tr>
+  `;
+});
+
+
 
     // Closes the table and shows it on the page
     html += '</tbody></table>';
